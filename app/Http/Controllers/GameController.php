@@ -21,6 +21,18 @@ class GameController extends Controller
         // return response()->json($games);
     }
 
+    public function getGame($id)
+    {
+        if (Game::where('id', $id)->exists()) {
+            $game = Game::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
+            return response($game, 200);
+          } else {
+            return response()->json([
+              "message" => "Game not found!!"
+            ], 404);
+          }
+    }
+
     /**
      * Show the form for creating a new resource.
      *

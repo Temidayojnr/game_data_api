@@ -13,15 +13,17 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('v1/players', 'PlayerController@index');
+
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('api/v1/games', 'GameController@index');
+Route::get('v1/games', 'GameController@index');
 
 // This route gets all the players in the system 
 
-Route::get('api/v1/players', 'PlayerController@index');
 
 // This route gets a single players 
-Route::get('api/v1/players/{id}', 'PlayerController@getSinglePlayer');
+Route::get('v1/players/{id}', 'PlayerController@getSinglePlayer');
